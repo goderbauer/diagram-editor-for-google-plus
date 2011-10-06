@@ -1,0 +1,50 @@
+[
+  {
+    "title":"Simple BPMN 2.0 Processes",
+    "namespace":"http://b3mn.org/stencilset/simpleBPMN2.0#",
+    "description":"Basic BPMN 2.0 subset for beginners.",
+    "uri":"/simpleBPMN2.0/simpleBPMN2.0.json",
+    "icon_url":"/simpleBPMN2.0/simpleBPMN2.0.png",
+    "visible":true
+  },
+  {
+    "title":"BPMN 2.0 Processes",
+    "namespace":"http://b3mn.org/stencilset/bpmn2.0#",
+    "description":"BPMN 2.0 stencil set specification for processes.",
+    "uri":"/bpmn2.0/bpmn2.0.json",
+    "icon_url":"/bpmn2.0/bpmn2.0.png",
+    "visible":true
+  },
+  {
+    "title":"UML Class Diagram",
+    "namespace":"http://b3mn.org/stencilset/UML2.2Class#",
+    "description":"UML 2.2 Class Diagrams",
+    "uri":"/uml2.2/uml2.2.json",
+    "icon_url":"/uml2.2/uml2.2class.png",
+    "visible":true
+  },
+  {
+    "title":"FMC Block Diagram",
+    "namespace":"http://www.fmc-modeling.org/stencilsets/fmcblockdiagram#",
+    "description":"FMC Block Diagrams show compositional structures as a composition of collaborating system components.",
+    "uri":"/fmcblockdiagram/fmcblockdiagram.json",
+    "icon_url":"/fmcblockdiagram/fmcblockdiagram.png",
+    "visible":true
+  },
+  {
+    "title":"Petrinets",
+    "namespace":"http://b3mn.org/stencilset/petrinet#",
+    "description":"Petrinets specification.",
+    "uri":"/petrinets/petrinets.json",
+    "icon_url":"/petrinets/petrinets.png",
+    "visible":true
+  },
+  {
+    "title":"EPC",
+    "namespace":"http://b3mn.org/stencilset/epc#",
+    "description":"Event-driven Process Chain specification.",
+    "uri":"/epc/epc.json",
+    "icon_url":"/epc/epc.png",
+    "visible":true
+  },
+]

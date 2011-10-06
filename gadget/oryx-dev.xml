@@ -1,0 +1,170 @@
+<Module>
+	<ModulePrefs title="Diagram Editor">
+		<Require feature="rpc" />
+	</ModulePrefs>
+	<Content type="html">
+	<![CDATA[
+	<!doctype html>
+	<html>
+        <head>
+        <script type="text/javascript" src="//hangoutsapi.appspot.com/static/hangout.js"></script>
+        <script src="https://pwgoesplus.appspot.com/gadget/console.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://pwgoesplus.appspot.com/gadget/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://pwgoesplus.appspot.com/gadget/adapter.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://pwgoesplus.appspot.com/gadget/stencilsetPolice.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://pwgoesplus.appspot.com/gadget/syncroWave.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://pwgoesplus.appspot.com/gadget/farbrausch.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://pwgoesplus.appspot.com/gadget/oryx.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://pwgoesplus.appspot.com/gadget/splash-dev.js" type="text/javascript" charset="utf-8"></script>
+        
+        <style type="text/css">
+            tr.zebra:nth-child(4n) {background-color: lightblue;}
+            
+            button::-moz-focus-inner { 
+              border: 0px;
+              padding: 0px;
+            }
+            
+            #splashScreen {
+                width: 481px;
+                height: 340px;
+            }
+            
+            #splash-header {
+                height: 64px;
+                background-position: 0px -176px;
+            }
+            
+            #splash-loading {
+                display: none;
+                position: relative;
+                height: 275px;
+                background-position: 0px -516px;
+                text-align: center;
+                font-family: 'Lucida Sans', Tahoma, sans-serif;
+                font-size: 8pt;
+            }
+            
+            #splash-loading #progressBar {
+                left: 120px;
+                top: 50%;
+                position: absolute;
+            }
+            
+            #stencilset-selection {
+                display: none;
+                margin: auto;
+            }
+            
+            .selection {
+                background-image: url(https://pwgoesplus.appspot.com/gadget/selection.png);
+                background-repeat: no-repeat;
+            }
+            
+            .selection-button {
+                border: none;
+                margin: 5px 15px 20px 30px;
+                padding: 0px;
+                background-position: 0px 0px;
+                height: 84px;
+                width: 84px;
+                display: inline-block;
+                float: left;
+            }
+            
+            .selection-button:hover {
+                background-position: -84px 0px;
+                height: 84px;
+                width: 84px;
+            }
+            
+            .selection-button:active {
+                background-position: -168px 0px;
+                height: 84px;
+                width: 84px;
+            }
+            
+            .selection-button:active .selection-symbol {
+                margin-left: 11px;
+                margin-top: 11px;
+            }
+            
+            .selection-button:active .selection-label {
+                margin-left: 2px;
+            }
+            
+            .selection-content {
+                width: 396px;
+                height: 225px;
+                padding: 51px 60px 0px 25px;
+                background-position: 0px -240px;
+            }
+            
+            .selection-symbol {
+                margin: 10px 10px 7px 10px;
+                height: 46px;
+                width: 64px;
+            }
+            
+            .selection-label {
+                text-align: center;
+                font-size: 8pt;
+                font-family: 'Lucida Grande', Tahoma, sans-serif;
+            }
+            
+            .selection-uml { background-position: 0px -84px; }
+            .selection-epc { background-position: -64px -84px; }
+            .selection-petrinets { background-position: -128px -84px; }
+            .selection-simple-bpmn { background-position: -192px -84px; }
+            .selection-fmc { background-position: 0px -130px; }
+            .selection-bpmn { background-position: -64px -130px; }
+        </style>
+	</head>
+	<body style="background-color: #f4f8fb; font-size: 12px">
+        <div id="splashScreen" style="margin:auto">
+            <div id="splash-header" class="selection"></div>
+            <div id="splash-loading" class="selection">
+                <div id="progressBar">
+                    <img src="https://pwgoesplus.appspot.com/gadget/ajax-loader.gif" /> 
+                    <div id="statusMessage"></div>
+                </div>
+            </div>
+            
+            <div id="stencilset-selection" class="selection selection-content">
+                <button type="button" id="selection_uml2.2" class="selection selection-button">
+                    <div class="selection selection-uml selection-symbol"></div>
+                    <div class="selection-label">UML</div>
+                </button>
+                <button type="button" id="selection_bpmn2.0" class="selection selection-button">
+                    <div class="selection selection-bpmn selection-symbol"></div>
+                    <div class="selection-label">BPMN</div>
+                </button>
+                <button type="button" id="selection_simpleBPMN2.0" class="selection selection-button">
+                    <div class="selection selection-simple-bpmn selection-symbol"></div>
+                    <div class="selection-label">Simple BPMN</div>
+                </button>
+                <button type="button" id="selection_epc" class="selection selection-button">
+                    <div class="selection selection-epc selection-symbol"></div>
+                    <div class="selection-label">EPC</div>
+                </button>
+                <button type="button" id="selection_fmcblockdiagram" class="selection selection-button">
+                    <div class="selection selection-fmc selection-symbol"></div>
+                    <div class="selection-label">FMC</div>
+                </button>
+                <button type="button" id="selection_petrinets" class="selection selection-button">
+                    <div class="selection selection-petrinets selection-symbol"></div>
+                    <div class="selection-label">Petrinet</div>
+                </button>
+            </div>
+        </div>
+        
+        <div id="oryx" style="display:none">
+            <iframe id="oryxFrame" src="" width="100%" style="border: 0px">
+                <p>Your browser does not support iframes.</p>
+            </iframe>         
+        </div>
+	</body>
+	</html>
+	]]>
+	</Content> 
+</Module>

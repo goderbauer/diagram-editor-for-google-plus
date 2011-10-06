@@ -1,0 +1,138 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:b3mn="http://b3mn.org/2007/b3mn"
+    xmlns:ext="http://b3mn.org/2007/ext"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:atom="http://b3mn.org/2007/atom+xhtml">
+    <head profile="http://purl.org/NET/erdf/profile">
+        <title>Oryx</title>
+		
+        <!-- libraries -->
+        <script src="console.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../oryx/editor/lib/prototype-1.5.1.js" type="text/javascript"></script>
+        <script src="../oryx/editor/lib/path_parser.js" type="text/javascript"></script>
+        <script src="../oryx/editor/lib/ext-2.0.2/adapter/ext/ext-base.js" type="text/javascript"></script>
+		<script src="../oryx/editor/lib/ext-2.0.2/ext-all.js" type="text/javascript"></script>
+		<script src="../oryx/editor/lib/ext-2.0.2/color-field.js" type="text/javascript"></script>
+		<script src="../oryx/editor/lib/jquery-ui-1.8.1.custom/js/jquery-1.4.2.min.noConflict.js"></script>
+		<script src="../oryx/editor/lib/jquery-ui-1.8.1.custom/js/jquery-ui-1.8.1.custom.min.js"></script>
+        
+        <style media="screen" type="text/css">
+			@import url("../oryx/editor/lib/ext-2.0.2/resources/css/ext-all.css");
+			@import url("../oryx/editor/lib/ext-2.0.2/resources/css/xtheme-gray.css"); 
+			@import url("../oryx/editor/lib/jquery-ui-1.8.1.custom/css/ui-lightness/jquery-ui-1.8.1.custom.css");
+		</style>
+        
+        <!-- oryx editor -->
+        <script src="../oryx/editor/data/i18n/translation_en_us.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/utils.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/kickstart.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/erdfparser.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/clazz.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/config.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/oryx.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/SVG/editpathhandler.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/SVG/minmaxpathhandler.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/SVG/pointspathhandler.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/SVG/svgmarker.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/SVG/svgshape.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/SVG/label.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/Math/math.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/StencilSet/stencil.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/StencilSet/property.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/StencilSet/propertyitem.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/StencilSet/complexpropertyitem.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/StencilSet/rules.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/StencilSet/stencilset.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/StencilSet/stencilsets.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/bounds.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/uiobject.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/abstractshape.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/canvas.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/main.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/svgDrag.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/shape.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/Controls/control.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/Controls/docker.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/Controls/magnet.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/node.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/edge.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/command.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/abstractPlugin.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/abstractLayouter.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Core/abstractcommand.js" type="text/javascript"></script>
+        
+        <script src="../oryx/editor/client/scripts/Plugins/sideTabs.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/addDocker.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/arrangementLight.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/canvasResize.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/dragDocker.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/dragdropresize.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/edit.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/keysMove.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/overlay.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/renameShapes.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/selectionframe.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/shapeHighlighting.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/shapemenu.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/toolbar.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/waveGlobalUndo.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/view.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/bpmn2.0.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/uml.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/wave.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/farbrausch.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/farbrausch_shadow.js" type="text/javascript"></script>
+		<script src="../oryx/editor/client/scripts/Plugins/farbrausch_afterglow.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/farbrausch_legend.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/shapeTooltip.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/propertytab.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/syncro.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/syncroOryx.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/paint.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/changelog.js" type="text/javascript"></script>        
+        <script src="../oryx/editor/client/scripts/Plugins/newshaperepository.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/dockerCreation.js" type="text/javascript"></script>
+        <script src="../oryx/editor/client/scripts/Plugins/schlaumeier.js" type="text/javascript"></script>    
+        <script src="../oryx/editor/client/scripts/Plugins/json_export.js" type="text/javascript"></script>   
+		
+        <!-- oryx editor -->
+        <link rel="Stylesheet" media="screen" href="../../oryx/editor/css/theme_norm.css" type="text/css" />
+    </head>
+
+    <body style="display: block; overflow: hidden;">  
+        <script type='text/javascript'>
+        <![CDATA[
+            var ed;
+            var stencilSetName = _getStencilSetName();
+
+            function onOryxResourcesLoaded(){
+                ed = new ORYX.Editor({
+                  'id': 'oryx-canvas',
+                  'stencilset': {
+                    'url': ORYX.CONFIG.ROOT_PATH + 'editor/data/stencilsets/' + stencilSetName + '/' + stencilSetName + '.json'
+                  }
+                });
+            }
+
+            function _getStencilSetName() {
+                if (stencilSetName) {
+                    return stencilSetName;
+                }
+
+                stencilSetName = "bpmn2.0";
+                var urlquery = location.href.split("?");
+                if (urlquery[1]) {
+                    var urlterms = urlquery[1].split(",");
+                    for (var i = 0; i < urlterms.length; i++) {
+                        if (urlterms[i].indexOf("stencilSetName=") == 0) {
+                            stencilSetName = urlterms[i].slice("stencilSetName=".length);
+                            break;
+                        }
+                    }
+                }
+                return stencilSetName;
+            }
+        ]]>
+        </script>
+    </body>
+</html>

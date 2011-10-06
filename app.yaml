@@ -1,0 +1,31 @@
+application: pwgoesplus
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /oryx/(.*)\.xhtml
+  static_files: oryx/\1.xhtml
+  upload: oryx/.*\.xhtml
+  mime_type: application/xhtml+xml
+  
+- url: /oryx/(.*)\.svg
+  static_files: oryx/\1.svg
+  upload: oryx/.*\.svg
+  mime_type: image/svg+xml
+  
+- url: /oryx/(.*)\.json
+  static_files: oryx/\1.json
+  upload: oryx/.*\.json
+  mime_type: application/json
+  
+- url: /oryx
+  static_dir: oryx
+
+- url: /gadget/(.*)\.xhtml
+  static_files: gadget/\1.xhtml
+  upload: gadget/.*\.xhtml
+  mime_type: application/xhtml+xml
+  
+- url: /gadget
+  static_dir: gadget

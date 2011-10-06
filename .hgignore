@@ -1,0 +1,19 @@
+# osx
+syntax: glob
+.DS_Store
+
+# vim
+syntax: glob
+*.swp
+
+# emacs
+syntax: glob
+*~
+syntax: regexp
+(.*/)?\#[^/]*\#$
+
+# other
+syntax: glob
+*.class
+compiled/
+build/
